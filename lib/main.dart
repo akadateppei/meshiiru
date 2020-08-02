@@ -51,6 +51,7 @@ class MyStatelessWidget extends StatelessWidget {
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text('AppBar Demo'),
+        backgroundColor: Colors.pink,
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add_alert),
@@ -70,37 +71,52 @@ class MyStatelessWidget extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget> [
-          _menuItem("menu1", Icon(Icons.settings)),
-          _menuItem("menu1", Icon(Icons.settings)),
-          _menuItem("menu1", Icon(Icons.settings)),
+          _menuItem("27","MON", Icon(Icons.settings)),
+          _menuItem("28","TUE", Icon(Icons.settings)),
+          _menuItem("29","WED", Icon(Icons.settings)),
         ],
       )
     );
   }
 }
 
-Widget _menuItem(String title, Icon icon) {
+Widget _menuItem(String day, weekday, Icon icon) {
   return GestureDetector(
-    child:Container(
-        padding: EdgeInsets.all(8.0),
-        child: Row(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child:icon,
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                  color:Colors.black,
-                  fontSize: 18.0
-              ),
-            ),
-          ],
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+            margin: EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  day,
+                  style: TextStyle(
+                      color:Colors.black,
+                      fontSize: 24.0
+                  ),
+                ),
+                Text(
+                  weekday,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12.0,
+                  ),
+                ),
+              ],
+            )
+        ),
+        Container(
+          margin: EdgeInsets.all(8.0),
+          child: FlatButton(
+            child: Text("いらない"),
+            color: Colors.grey,
+            textColor: Colors.white,
+            onPressed: () {},
+
+          ),
         )
-    ),
-    onTap: () {
-      print("onTap called.");
-    },
+      ],
+    )
   );
 }
